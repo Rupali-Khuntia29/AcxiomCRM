@@ -1,0 +1,13 @@
+@model AcxiomCRM.Controllers.AccountController.RegisterViewModel
+@{ ViewData["Title"] = "Register"; }
+<div class="auth-wrap"><div class="auth-card">
+<div class="eyebrow">GET STARTED</div><h1 class="page-title">Create your account</h1><p class="text-secondary mb-4">Start managing customer relationships more clearly.</p>
+<form asp-action="Register" method="post">@Html.AntiForgeryToken()<div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+<div class="mb-3"><label asp-for="FullName" class="form-label">Full name</label><input asp-for="FullName" class="form-control" placeholder="Your full name"/><span asp-validation-for="FullName" class="text-danger small"></span></div>
+<div class="mb-3"><label asp-for="Email" class="form-label">Email</label><input asp-for="Email" class="form-control" autocomplete="username" placeholder="you@company.com"/><span asp-validation-for="Email" class="text-danger small"></span></div>
+<div class="mb-3"><label asp-for="Password" class="form-label">Password</label><input asp-for="Password" class="form-control" autocomplete="new-password" placeholder="At least 8 characters"/><span asp-validation-for="Password" class="text-danger small"></span></div>
+<div class="mb-4"><label asp-for="ConfirmPassword" class="form-label">Confirm password</label><input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password"/><span asp-validation-for="ConfirmPassword" class="text-danger small"></span></div>
+<button class="btn btn-primary w-100">Create account</button>
+</form><p class="text-secondary small mt-4 mb-0 text-center">Already registered? <a asp-action="Login">Sign in</a></p>
+</div></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

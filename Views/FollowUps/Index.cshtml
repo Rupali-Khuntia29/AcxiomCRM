@@ -1,0 +1,7 @@
+@model IEnumerable<FollowUp>
+@{ ViewData["Title"] = "Follow-ups"; }
+<div class="d-flex justify-content-between align-items-center mb-4"><div><div class="eyebrow">CUSTOMER ENGAGEMENT</div><h1 class="page-title">Follow-ups</h1><p class="text-secondary mb-0">Plan calls, meetings and next steps.</p></div><a class="btn btn-primary" asp-action="Create">＋ Schedule follow-up</a></div>
+<div class="panel table-responsive"><table class="table align-middle"><thead><tr><th>Subject</th><th>Type</th><th>Date</th><th>Status</th><th>Remarks</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td class="fw-semibold">@x.Subject</td><td>@x.FollowUpType</td><td>@x.FollowUpDate.ToString("dd MMM yyyy HH:mm")</td><td><span class="status-pill">@x.Status</span></td><td>@x.Remarks</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="5" class="text-center text-secondary py-4">No follow-ups scheduled.</td></tr> }
+</tbody></table></div>

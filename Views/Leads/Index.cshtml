@@ -1,0 +1,8 @@
+@model IEnumerable<Lead>
+@{ ViewData["Title"] = "Leads"; }
+<div class="d-flex justify-content-between align-items-center mb-4"><div><div class="eyebrow">SALES PROSPECTS</div><h1 class="page-title">Leads</h1><p class="text-secondary mb-0">Capture and qualify potential customers.</p></div><a class="btn btn-primary" asp-action="Create">＋ Add lead</a></div>
+<form method="get" class="searchbar mb-3"><input name="search" value="@ViewBag.Search" class="form-control" placeholder="Search lead, company or status..." /><button class="btn btn-outline-secondary">Search</button></form>
+<div class="panel table-responsive"><table class="table align-middle"><thead><tr><th>Lead</th><th>Company</th><th>Source</th><th>Expected value</th><th>Status</th><th>Created</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td class="fw-semibold">@x.LeadName</td><td>@(x.CompanyName ?? "—")</td><td>@x.Source</td><td>₹@x.ExpectedValue.ToString("N0")</td><td><span class="status-pill">@x.Status</span></td><td>@x.CreatedDate.ToLocalTime().ToString("dd MMM yyyy")</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="6" class="text-center text-secondary py-4">No leads found.</td></tr> }
+</tbody></table></div>

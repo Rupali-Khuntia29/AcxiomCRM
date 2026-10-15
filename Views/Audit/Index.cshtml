@@ -1,0 +1,7 @@
+@model IEnumerable<AuditLog>
+@{ ViewData["Title"] = "Audit Log"; }
+<div class="mb-4"><div class="eyebrow">SECURITY & ACCOUNTABILITY</div><h1 class="page-title">Audit Log</h1><p class="text-secondary mb-0">Recent security and business events. Admin-only access.</p></div>
+<div class="panel table-responsive"><table class="table align-middle"><thead><tr><th>Timestamp (UTC)</th><th>User ID</th><th>Action</th><th>Entity</th><th>Record</th><th>Old value</th><th>New value</th><th>IP address</th></tr></thead><tbody>
+@foreach (var x in Model) { <tr><td>@x.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")</td><td>@x.UserId</td><td>@x.Action</td><td>@x.EntityName</td><td>@x.RecordId</td><td>@x.OldValue</td><td>@x.NewValue</td><td>@x.IpAddress</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="8" class="text-center text-secondary py-4">No audit events yet.</td></tr> }
+</tbody></table></div>
